@@ -1,0 +1,23 @@
+{
+  "name": "context-mark-dsh",
+  "version": "0.4.1",
+  "private": true,
+  "type": "module",
+  "description": "Select and annotate passages in DeepSeek Harness replies.",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": ["lib", "cordis.patch.yml", "README.md"],
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && node --check lib/revise.js && node test/marks.test.mjs && node test/revise.test.mjs"
+  },
+  "dsh": {
+    "engines": { "dsh": ">=0.2.1-rc.5" },
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": { "platform": "web", "inject": [] }
+  }
+}
